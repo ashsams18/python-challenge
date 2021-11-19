@@ -13,6 +13,9 @@ count_all_changes = 0
 should_count = False
 greatest_value = 0
 greatest_month = ""
+greatest_dec_value = 0
+greatest_dec_month = ""
+
 
 with open(file_path, 'r') as csv_file:
   csvreader = csv.reader(csv_file, delimiter=",")
@@ -39,24 +42,38 @@ with open(file_path, 'r') as csv_file:
     
     if change > greatest_value:
       greatest_value = change
-      greatest_month = row[0]
-
-# Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
-
-# The greatest increase in profits (date and amount) over the entire period
-
-# The greatest decrease in profits (date and amount) over the entire period
+      greatest_month = row[0]    
+    
+    if change < greatest_dec_value:
+      greatest_dec_value = change
+      greatest_dec_month = row[0]
 
 # text
-  # Financial Analysis
+  (f"Financial Analysis")
   # Total Months: 86
   print (f"Total Months: {num_rows}")
   # Total: $38382578
   print(f"Total : ${net_total}")
-  # # Average  Change: $-2315.12
+  # Average  Change: $-2315.12
   print(f"Average Change : ${round(sum_all_changes / count_all_changes, 2)}")
-  # # Greatest Increase in Profits: Feb-2012 ($1926159)
+  # Greatest Increase in Profits: Feb-2012 ($1926159)
   print(f"Greatest Increase in Profits : {greatest_month} | ${greatest_value}")
-  # # Greatest Decrease in Profits: Sep-2013 ($-2196167)
-  # print(f"Greatest Decrease in Profits : {net_total}")
+  # Greatest Decrease in Profits: Sep-2013 ($-2196167)
+  print(f"Greatest Decrease in Profits : {greatest_dec_month} | ${greatest_dec_value}")
 # In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+
+path = "./analysis/pybank.txt"
+
+contents = [
+  "Financial Analysis",
+  "----------------------",
+  "Total Months: 86",
+  "Total: $38382578",
+  "Average  Change: $-2315.12",
+  "Greatest Increase in Profits: Feb-2012 ($1926159)",
+  "Greatest Decrease in Profits: Sep-2013 ($-2196167)"]
+
+with open(path, "w") as f:
+  for content in contents:
+    content = content + " \n"
+    f.write(content)
