@@ -10,9 +10,6 @@ votes_tally = {}
 total_candidates = 0
 percentage_votes_won = 0
 winner = 0
-test = []
-
-
 
 with open(file_path, 'r') as csv_file:
   csvreader = csv.reader(csv_file, delimiter=",")
@@ -31,10 +28,10 @@ with open(file_path, 'r') as csv_file:
 
     winner = max(votes_tally, key=votes_tally.get)
 
-    for key in votes_tally.keys():
+  for key in votes_tally.keys():
         votes_tally[key]
-    percentage_votes_won = (votes_tally[key] / num_votes) * 100
-    #print (percentage_votes_won)
+  percentage_votes_won = (votes_tally[key] / num_votes) * 100
+  # print (percentage_votes_won)
 
 # The total number of votes cast
   print (f"Total Votes: {num_votes}")
