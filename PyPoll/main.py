@@ -24,25 +24,20 @@ with open(file_path, 'r') as csv_file:
     else:
       votes_tally[current_cand] += 1
    
-    total_candidates = list(votes_tally.keys())
+total_candidates = list(votes_tally.keys())
 
-    winner = max(votes_tally, key=votes_tally.get)
-
-  for key in votes_tally.keys():
-        votes_tally[key]
-  percentage_votes_won = (votes_tally[key] / num_votes) * 100
-  # print (percentage_votes_won)
+winner = max(votes_tally, key=votes_tally.get)
 
 # The total number of votes cast
-  print (f"Total Votes: {num_votes}")
+print (f"Total Votes: {num_votes}")
 # A complete list of candidates who received votes
-  print (f"List of Candidates: {total_candidates}")
-# The percentage of votes each candidate won
-  print (f"% of votes won: {'{:.3f}'.format(percentage_votes_won)}%")
-# The total number of votes each candidate won
-  print (f"number of votes won: {votes_tally}")
-# The winner of the election based on popular vote.
-  print (f"Election winner: {winner}")
+print (f"List of Candidates: {total_candidates}")
+
+for key in votes_tally.keys():
+  #  = (float(votes_tally[key]) / float(num_votes) * 100)
+  print(f"Total number and percentage of votes won by {key} = {votes_tally[key]} votes = ({(votes_tally[key]/num_votes)*100:.3f}%).")
+
+print (f"Election winner: {winner}")
 
 path = "./analysis/PyPoll.txt"
 
